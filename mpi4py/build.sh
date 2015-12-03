@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t mpi4py .
+docker build -t mpi4py:0.1 .
