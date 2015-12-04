@@ -8,7 +8,7 @@ RUN  apt-get update                          && \
      pip install mpi4py
 
 # MPI program
-WORKDIR /root
+WORKDIR /usr/local/src
 ADD     mpi_01.py mpi_01.py
 
 CMD ["/bin/bash"]
