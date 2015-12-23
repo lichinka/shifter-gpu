@@ -2,4 +2,4 @@
 
 docker run --rm=true                            \
             -it                                 \
-            mpi4py
+            mpi4py:0.2
