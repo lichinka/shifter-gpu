@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 MAINTAINER nvidia.com
 
-RUN apt-get update && apt-get install -y wget
+RUN apt-get update --fix-missing && apt-get install -y --no-install-recommends wget
 
 RUN wget -q -O - http://developer.download.nvidia.com/compute/cuda/repos/GPGKEY | apt-key add - && \
     echo "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64 /" > /etc/apt/sources.list.d/cuda.list && \
