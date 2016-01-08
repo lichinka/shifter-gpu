@@ -26,8 +26,8 @@ ENV PATH /usr/local/cuda/bin:${PATH}
 ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_PATH}
 
 WORKDIR /usr/local/src
-ADD src/makefile
-ADD src/stream.cu
+ADD src/makefile makefile
+ADD src/stream.cu stream.cu
 RUN make
 
 CMD ./stream
