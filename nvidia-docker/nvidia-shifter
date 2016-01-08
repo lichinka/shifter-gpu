@@ -4,50 +4,8 @@ if [ -z "${CUDATOOLKIT_HOME}" ]; then
     echo "CUDATOOLKIT_HOME is not defined"
     exit 1
 else
-    srun --pty shifter             \
-               -V ${CUDATOOLKIT_HOME}/lib64:nvidia/lib64   \
-               -V ${CUDATOOLKIT_HOME}/lib:nvidia/lib        \
+    srun --pty shifter                                                   \
+               -V /opt/cray/nvidia/default/bin:/usr/local/bin            \
+               -V /opt/cray/nvidia/default/lib64:/usr/local/nvidia/lib64 \
                /bin/bash
-    #-V ${CUDATOOLKIT_HOME}/lib64/stubs/libcuda.so:/usr/lib/libcuda.so \
-    #-V ${CUDATOOLKIT_HOME}/lib64/stubs/libcuda.so.1:/usr/lib/libcuda.so.1 \
-    #-V ${CUDATOOLKIT_HOME}/lib64/stubs/libcuda.so:/usr/local/nvidia/lib64/libcuda.so \
-    #-V ${CUDATOOLKIT_HOME}/lib64/stubs/libcuda.so.1:/usr/local/nvidia/lib64/libcuda.so.1 \
-    #-V ${CUDATOOLKIT_HOME}/lib/libcuda.so.1:/usr/local/nvidia/lib/libcuda.so.1 \
-    #-V ${CUDATOOLKIT_HOME}/lib/libcuda.so.1:/usr/lib32/libcuda.so.1 \
-    #-V ${CUDATOOLKIT_HOME}/lib/libcuda.so:/usr/lib32/libcuda.so \
-    #-V ${CUDATOOLKIT_HOME}/lib/libcuda.so:/usr/local/nvidia/lib/libcuda.so \
-    #-V ${CUDATOOLKIT_HOME}/lib64/libnvcuvid.so.1:/usr/lib/libnvcuvid.so.1          \
-    #-V ${CUDATOOLKIT_HOME}/lib64/libnvcuvid.so.1:/usr/local/nvidia/lib64/libnvcuvid.so.1 \
-    #-V ${CUDATOOLKIT_HOME}/lib/libnvcuvid.so.1:/usr/lib32/libnvcuvid.so.1            \
-    #-V ${CUDATOOLKIT_HOME}/lib/libnvcuvid.so.1:/usr/local/nvidia/lib/libnvcuvid.so.1 \
-    #-V ${CUDATOOLKIT_HOME}/lib64/libnvcuvid.so:/usr/lib/libnvcuvid.so                    \
-    #-V ${CUDATOOLKIT_HOME}/lib64/libnvcuvid.so:/usr/local/nvidia/lib64/libnvcuvid.so     \
-    #-V ${CUDATOOLKIT_HOME}/lib/libnvcuvid.so:/usr/lib32/libnvcuvid.so                \
-    #-V ${CUDATOOLKIT_HOME}/lib/libnvcuvid.so:/usr/local/nvidia/lib/libnvcuvid.so     \
-    #-V ${CUDATOOLKIT_HOME}/lib64/libnvidia-compiler.so.355.11:/usr/lib/libnvidia-compiler.so.355.11 \
-    #-V ${CUDATOOLKIT_HOME}/lib64/libnvidia-compiler.so.355.11:/usr/local/nvidia/lib64/libnvidia-compiler.so.355.11 \
-    #-V ${CUDATOOLKIT_HOME}/lib64/libnvidia-compiler.so:/usr/lib/libnvidia-compiler.so    \
-    #-V ${CUDATOOLKIT_HOME}/lib64/libnvidia-compiler.so:/usr/local/nvidia/lib64/libnvidia-compiler.so \
-    #-V ${CUDATOOLKIT_HOME}/lib64/libnvidia-encode.so.1:/usr/lib/libnvidia-encode.so.1     \
-    #-V ${CUDATOOLKIT_HOME}/lib64/libnvidia-encode.so.1:/usr/local/nvidia/lib64/libnvidia-encode.so.1 \
-    #-V ${CUDATOOLKIT_HOME}/lib/libnvidia-encode.so.1:/usr/lib32/libnvidia-encode.so.1 \
-    #-V ${CUDATOOLKIT_HOME}/lib/libnvidia-encode.so.1:/usr/local/nvidia/lib/libnvidia-encode.so.1 \
-    #-V ${CUDATOOLKIT_HOME}/lib64/libnvidia-encode.so:/usr/lib/libnvidia-encode.so         \
-    #-V ${CUDATOOLKIT_HOME}/lib64/libnvidia-encode.so:/usr/local/nvidia/lib64/libnvidia-encode.so \
-    #-V ${CUDATOOLKIT_HOME}/lib/libnvidia-encode.so:/usr/lib32/libnvidia-encode.so            \
-    #-V ${CUDATOOLKIT_HOME}/lib/libnvidia-encode.so:/usr/local/nvidia/lib/libnvidia-encode.so \
-    #-V ${CUDATOOLKIT_HOME}/lib64/libnvidia-ml.so.1:/usr/lib/libnvidia-ml.so.1                    \
-    #-V ${CUDATOOLKIT_HOME}/lib64/libnvidia-ml.so.1:/usr/local/nvidia/lib64/libnvidia-ml.so.1     \
-    #-V ${CUDATOOLKIT_HOME}/lib/libnvidia-ml.so.1:/usr/lib32/libnvidia-ml.so.1                \
-    #-V ${CUDATOOLKIT_HOME}/lib/libnvidia-ml.so.1:/usr/local/nvidia/lib/libnvidia-ml.so.1     \
-    #-V ${CUDATOOLKIT_HOME}/lib64/libnvidia-ml.so:/usr/lib/libnvidia-ml.so                        \
-    #-V ${CUDATOOLKIT_HOME}/lib64/libnvidia-ml.so:/usr/local/nvidia/lib64/libnvidia-ml.so         \
-    #-V ${CUDATOOLKIT_HOME}/lib/libnvidia-ml.so:/usr/lib32/libnvidia-ml.so                    \
-    #-V ${CUDATOOLKIT_HOME}/lib/libnvidia-ml.so:/usr/local/nvidia/lib/libnvidia-ml.so         \
-    #-V $( which nvidia-smi ):/usr/local/bin/nvidia-smi \
-    ##-V /usr/bin/nvidia-cuda-mps-control:/usr/local/bin/nvidia-cuda-mps-control  \
-    ##-V /usr/bin/nvidia-cuda-mps-server:/usr/local/bin/nvidia-cuda-mps-server    \
-    ##-V /usr/bin/nvidia-debugdump:/usr/local/bin/nvidia-debugdump                \
-    ##-V /usr/bin/nvidia-persistenced:/usr/local/bin/nvidia-persistenced          \
-    #/bin/bash
 fi
