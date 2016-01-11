@@ -30,4 +30,4 @@ ADD src/makefile makefile
 ADD src/stream.cu stream.cu
 RUN make
 
-CMD ./stream
+CMD ['/usr/local/src/stream']
