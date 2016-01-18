@@ -17,6 +17,8 @@ cd osu-micro-benchmarks-4.4
 ./configure --prefix=${HOME}/osu-benchmarks CC=$( which mpicc ) --enable-cuda --with-cuda-include=${CUDA_PATH}/include --with-cuda-libpath=${CUDA_PATH}/lib64
 make
 make install
+cd $HOME
+./benchmark_orion.sh
 ```
 
 >>>>> add tests from Greina
