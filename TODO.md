@@ -1,6 +1,6 @@
 ## Open questions
 
-* Found one case in which the container recipe does not work, i.e.:
+* Found one case in which the container recipe does not work; to execute the native implementation:
 ```
 ssh -YC greina24
 export PATH=${PATH}:/usr/local/cuda/bin
@@ -9,9 +9,12 @@ cd ${HOME}/tmp/stream_benchmark
 make
 ./stream
 ```
-  4. pull the image `lichinka:shifter-gpu:7.3` which contains an implementation of the Stream benchmark;
-  5. cd into `${HOME}/nvidia-docker` and launch the container `./nvidia-docker --rm=true -it docker.io/lichinka/shifter-gpu:7.3 /usr/local/src/stream`
-
+* To execute the containerized implementation:
+```
+docker pull lichinka:shifter-gpu:7.3
+cd ${HOME}/nvidia-docker
+./nvidia-docker --rm=true -it docker.io/lichinka/shifter-gpu:7.3 /usr/local/src/stream
+```
 * Low performance if using RDMA between containers: multiple and single host testing show the same bad performance.
 * Follow these steps to perform native P2P tests on `greina20`:
 ```
