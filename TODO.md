@@ -11,7 +11,7 @@ make
 ```
 * To execute the containerized implementation:
 ```
-docker pull lichinka:shifter-gpu:7.3
+docker pull lichinka/shifter-gpu:7.3
 cd ${HOME}/nvidia-docker
 ./nvidia-docker --rm=true -it docker.io/lichinka/shifter-gpu:7.3 /usr/local/src/stream
 ```
