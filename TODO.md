@@ -18,13 +18,15 @@ GPU=0 ./nvidia-docker run --rm=true -it docker.io/lichinka/shifter-gpu:7.3 /usr/
 * Low performance if using RDMA between containers: multiple and single host testing show the same bad performance.
 * Follow these steps to perform native P2P tests on `greina20`:
 ```
-module load mvapich2/gcc/64/2.0b cuda70/toolkit/7.0.28
+module load cuda60/toolkit/6.0.37 mvapich2/gcc/64/2.0-gcc-4.8.2-cuda-6.0
 cd $HOME/src
 tar xvzf osu-micro-benchmarks-4.4.tar.gz
 cd osu-micro-benchmarks-4.4
-./configure --prefix=${HOME}/osu-benchmarks CC=$( which mpicc ) --enable-cuda --with-cuda-include=${CUDA_PATH}/include --with-cuda-libpath=${CUDA_PATH}/lib64
+./configure --prefix=${HOME}/osu-benchmarks CC=$( which mpicc ) --enable-cuda --with-cuda-include=${CUDA_INC_PATH}/include --with-cuda-libpath=${CUDA_INC_PATH}/lib64
 make
 make install
+cd $HOME/src
+rm -rf osu-micro-benchmarks-4.4
 cd $HOME
 ./benchmark_orion.sh
 ```
