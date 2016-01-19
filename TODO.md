@@ -13,7 +13,7 @@ make
 ```
 docker pull lichinka/shifter-gpu:7.3
 cd ${HOME}/nvidia-docker
-./nvidia-docker --rm=true -it docker.io/lichinka/shifter-gpu:7.3 /usr/local/src/stream
+./nvidia-docker run --rm=true -it docker.io/lichinka/shifter-gpu:7.3 /usr/local/src/stream
 ```
 * Low performance if using RDMA between containers: multiple and single host testing show the same bad performance.
 * Follow these steps to perform native P2P tests on `greina20`:
