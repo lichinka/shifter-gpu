@@ -1,11 +1,6 @@
 #!/bin/sh
 
-if [ -z "${CUDATOOLKIT_HOME}" ]; then
-    echo "CUDATOOLKIT_HOME is not defined"
-    exit 1
-else
-    srun --pty shifter                                                   \
-               -V /opt/cray/nvidia/default/bin:/usr/local/bin            \
-               -V /opt/cray/nvidia/default/lib64:/usr/local/nvidia/lib64 \
-               /bin/bash
-fi
+srun --pty shifter                                                   \
+           -V /opt/cray/nvidia/default/bin:/usr/local/bin            \
+           -V /opt/cray/nvidia/default/lib64:/usr/local/nvidia/lib64 \
+           /bin/bash

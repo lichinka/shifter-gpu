@@ -217,4 +217,4 @@ case $CMD in
     ;;
 esac
 
-docker $DOCKER_ARGS $NV_DOCKER_ARGS $@
+echo "docker $DOCKER_ARGS $NV_DOCKER_ARGS $@"
