@@ -17,7 +17,7 @@
   Further modifications by: Ben Cumming, CSCS
 */
 
-#define N   (2<<26)
+#define N   (2<<24)
 #define NTIMES  20
 
 #include <string>
@@ -133,6 +133,7 @@ int main()
     set_array<real><<<dimGrid,dimBlock>>>(d_c, .5f, N);
 
     /*  --- MAIN LOOP --- repeat test cases NTIMES times --- */
+    cudaThreadSynchronize();
 
     scalar=3.0f;
     for (k=0; k<NTIMES; k++)
