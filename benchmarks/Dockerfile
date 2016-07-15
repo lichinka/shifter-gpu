@@ -19,7 +19,7 @@ RUN apt-get install -y --no-install-recommends --force-yes "cuda-toolkit-7.0" gp
 #
 # setup CUDA 7.0
 #
-RUN echo "/usr/local/cuda/lib" >> /etc/ld.so.conf.d/cuda.conf && \
+RUN echo "/usr/local/cuda/lib" >> /etc/ld.so.conf.d/cuda.conf   && \
     echo "/usr/local/cuda/lib64" >> /etc/ld.so.conf.d/cuda.conf && \
     ldconfig
 
@@ -38,5 +38,8 @@ ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_P
 WORKDIR /usr/local/src
 
 ADD . benchmarks
+
+RUN cd benchmarks && \
+    ./run.sh
 
 CMD /usr/local/src/benchmarks/run.sh
