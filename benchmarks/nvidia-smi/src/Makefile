@@ -1,0 +1,2 @@
+run : 
+	nvidia-smi -q
