@@ -1,8 +1,12 @@
 FROM ubuntu:14.04
-MAINTAINER nvidia.com
+MAINTAINER cscs
 
-RUN apt-get update --fix-missing && apt-get install -y --no-install-recommends wget
+RUN apt-get update --fix-missing                    && \
+    apt-get install -y --no-install-recommends wget
 
+#
+# download CUDA 7.0
+#
 RUN wget -q -O - http://developer.download.nvidia.com/compute/cuda/repos/GPGKEY | apt-key add - && \
     echo "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64 /" > /etc/apt/sources.list.d/cuda.list && \
     apt-get update
@@ -12,6 +16,9 @@ LABEL com.nvidia.cuda.version="7.0"
 
 RUN apt-get install -y --no-install-recommends --force-yes "cuda-toolkit-7.0" gpu-deployment-kit
 
+#
+# setup CUDA 7.0
+#
 RUN echo "/usr/local/cuda/lib" >> /etc/ld.so.conf.d/cuda.conf && \
     echo "/usr/local/cuda/lib64" >> /etc/ld.so.conf.d/cuda.conf && \
     ldconfig
@@ -25,9 +32,11 @@ RUN mkdir -p /usr/local/nvidia/lib   && \
 ENV PATH /usr/local/cuda/bin:${PATH}
 ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_PATH}
 
+#
+# embed various GPU benchmarks
+#
 WORKDIR /usr/local/src
-ADD src/makefile makefile
-ADD src/stream.cu stream.cu
-RUN make
 
-CMD ['/usr/local/src/stream']
+ADD . benchmarks
+
+CMD /usr/local/src/benchmarks/run.sh
