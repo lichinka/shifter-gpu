@@ -1,18 +1,13 @@
-#! /bin/sh
+#!/bin/bash
 
-IMAGE_NAME="cuda_sample"
-CONTAINER_NAME="${IMAGE_NAME}_container"
+BASE_DIR="$( dirname $0 )"
 
-if [ -z $GPU ]; then
-    echo "No GPU selected"
-    exit 0
-fi
+#
+# this makes sense only if run as a Docker CMD
+#
+cd ${BASE_DIR}
 
-docker rm -f $CONTAINER_NAME 2> /dev/null
-
-for sample in $(ls -d */); do
-    docker build -t $IMAGE_NAME --rm=true "$sample"
-    ../nvidia-docker run --name=$CONTAINER_NAME $IMAGE_NAME
-    docker rm $CONTAINER_NAME
-    docker rmi $IMAGE_NAME
+for bench in $(ls -d */); do
+    cd ${BASE_DIR}/${bench}src
+    make run
 done
