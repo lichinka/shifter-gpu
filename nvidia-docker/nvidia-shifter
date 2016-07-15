@@ -1,6 +1,0 @@
-#!/bin/sh
-
-srun --pty shifter                                                   \
-           -V /opt/cray/nvidia/default/bin:/usr/local/bin            \
-           -V /opt/cray/nvidia/default/lib64:/usr/local/nvidia/lib64 \
-           /bin/bash

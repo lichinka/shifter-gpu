@@ -17,7 +17,7 @@
   Further modifications by: Ben Cumming, CSCS
 */
 
-#define N   (2<<24)
+#define N   (2<<20)
 #define NTIMES  20
 
 #include <string>
