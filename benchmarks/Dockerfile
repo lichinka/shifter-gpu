@@ -39,7 +39,4 @@ WORKDIR /usr/local/src
 
 ADD . benchmarks
 
-RUN cd benchmarks && \
-    ./run.sh
-
 CMD /usr/local/src/benchmarks/run.sh
