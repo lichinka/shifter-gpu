@@ -8,4 +8,4 @@
 module load shifter/20160627
 echo "Launching Shifter GPU benchmarks on $( hostname ) ..."
 
-srun shifter --image=docker:lichinka/shifter-gpu:benchmarks.0.1
+srun shifter --image=docker:lichinka/shifter-gpu:benchmarks.0.2 /usr/local/src/benchmarks/run.sh
