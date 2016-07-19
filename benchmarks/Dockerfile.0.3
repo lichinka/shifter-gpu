@@ -33,7 +33,7 @@ ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_P
 # embed various GPU benchmarks
 #
 WORKDIR /usr/local/src
-ADD     ./benchmarks benchmarks
+ADD     . benchmarks
 
 #
 # build the benchmarks
