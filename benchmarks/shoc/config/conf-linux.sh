@@ -10,6 +10,10 @@
 # the linker such as /usr/lib.
 #
 sh ./configure \
-CPPFLAGS="-I/usr/local/cuda/include"
-
+CPPFLAGS="-I/usr/local/cuda/include" \
+CUDA_CPPFLAGS="-gencode=arch=compute_35,code=sm_35" \
+--host=x86_64-unknown-linux-gnu \
+--with-opencl \
+--with-cuda \
+--without-mpi
 
