@@ -5,18 +5,17 @@ BENCHMARKS = bandwidthTest cuda-stream deviceQuery matrixMulCUBLAS nvidia-smi sh
 all: $(VERSIONS)
 
 $(VERSIONS):
-	cd benchmarks
-	docker build --rm=true --tag=$(NAME):$@ --file=$(shell pwd)/benchmarks/Dockerfile.$@ .
+	docker build --rm=true --tag=$(NAME):$@ --file=Dockerfile.$@ .
 
 run: $(BENCHMARKS)
 	echo "### Done ###"
 
 bandwidthTest cuda-stream deviceQuery matrixMulCUBLAS nvidia-smi:
-	cd benchmarks/$@/src
+	cd $@/src
 	make run
 
 shoc:
-	cd benchmarks/shoc/bin
+	cd shoc/bin
 	./shocdriver -cuda   -s 4 -d 0
 	./shocdriver -opencl -s 4 -d 0
 	
